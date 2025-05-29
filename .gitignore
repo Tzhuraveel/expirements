@@ -1,1 +1,3 @@
 .DS_Store
+./networking/uploader/storage/*
+./networking/uploader/text.txt
