@@ -1,24 +1,11 @@
-const http = require("node:http");
+const TZ = require('./framework/tz')
 
-const server = http.createServer();
+const server = new TZ()
 
-server.on("request", (request, response) => {
-  console.log("--------- METHOD: ---------");
-  console.log(request.method);
+server.route('get', '/login', (req, res) => {
+  res.status(200).send({ message: 'Test' })
+})
 
-  console.log("--------- URL: ---------");
-  console.log(request.url);
-
-  console.log("--------- HEADERS: ---------");
-  console.log(request.headers);
-
-  console.log("--------- BODY: ---------");
-
-  request.on("data", (chunk) => {
-    console.log(chunk.toString("utf-8"));
-  });
-});
-
-server.listen(3000, () => {
-  console.log("Server listening on http://localhost:3000");
-});
+server.listen(9000, () => {
+  console.log('Server has started on port 9000')
+})
